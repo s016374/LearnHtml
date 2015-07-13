@@ -1,0 +1,150 @@
+div.borderRadius{
+    border: solid;
+    padding: 20px;
+    width: 200px;
+    height: 20px;
+    text-align: center;
+    border-radius: 15px;
+    border-color: darkgreen;
+    color: #98bf21;
+    box-shadow: 10px 10px 15px #48884f;
+    border-top-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    transform: rotate(30deg);
+    position: relative;
+    left: 100px;
+    top: 50px;
+    font-size: small;
+    transition: 2s;
+    /*transition-delay: 1s;*/
+}
+div.borderRadius:hover{
+    width: 400px;
+    height: 50px;
+    font-size: x-large;
+    transform: rotate(360deg);
+}
+div.borderImage{
+    border-image: url("../PIC/border.png") 15 15 stretch;
+    padding: 20px;
+    width: 200px;
+    text-align: center;
+    box-shadow: 10px -10px 15px #FF704D;
+    color: #eea02e;
+    transform: skew(-15deg,-20deg);
+    position: relative;
+    left: 230px;
+    top: 10px;
+}
+div.divFrame{
+    border: 10px groove #98bf21;
+    width: 800px;
+    height: 250px;
+    border-radius: 50px;
+}
+div#divBackground{
+    background-image: url("../PIC/img_flwr.gif"), url("../PIC/img1.jpg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    top: 30px;
+    left: 25px;
+    float: left;
+    transform: matrix(90deg,0,0,0,0,0);
+}
+div#divText{
+    width: 500px;
+    /*border: 2px solid #F3B026;*/
+    padding: 20px;
+    text-align: start;
+    position: relative;
+    left: 200px;
+    float: left;
+    color: #48884f;
+    word-break: break-all;
+    word-wrap: break-word;
+    transform: scale(1.2,0.8);
+    -webkit-column-count:3;
+    column-count: 3;
+    -webkit-column-gap: 10px;
+    -webkit-column-rule: 1px outset #98bf21;
+    outline: 1px solid #98bf21;
+    outline-offset: -12px;
+}
+div#linearGradient{
+    background-image: linear-gradient(to bottom right, #508835, rgba(217, 217, 217, 0.15), #ee6f54);
+    width: 150px;
+    height: 150px;
+    border: medium;
+    border-radius: 30px;
+    resize: both;
+    overflow: auto;
+}
+div#radialGradient{
+    background: radial-gradient(#508835, rgba(217, 217, 217, 0.15), #ee6f54);
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+}
+div#repeatRadialGradient{
+    background: repeating-radial-gradient(#508835, #D9D9D9 10%, #ee6f54 15%);
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+}
+div.gradient{
+    float: left;
+    margin-left: 50px;
+}
+h1.css3{
+    position: absolute;
+    z-index: 1;
+    left: 250px;
+    text-shadow: 5px 5px 5px red;
+    animation: myfirst 30s infinite;
+}
+@keyframes myfirst {
+    10%{
+        color: inherit;
+    }
+    20%{
+        color: #98bf21;
+        left: 350px;
+        top: 100px;
+    }
+    30%{
+        color: #ee6f54;
+        left: 450px;
+        top: 200px;
+    }
+    40%{
+        color: #F3B026;
+        left: 350px;
+        top: 300px;
+    }
+    50%{
+        color: aquamarine;
+        top: 400px;
+    }
+    60%{
+        color: blueviolet;
+        left: 150px;
+        top: 300px;
+    }
+    70%{
+        color: deeppink;
+        left: 50px;
+        top: 200px;
+    }
+    80%{
+        color: cyan;
+        left: 150px;
+        top: 100px;
+    }
+    90%{
+        color: #D9D9D9;
+    }
+    100%{
+        color: inherit;
+    }
+}

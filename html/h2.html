@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>h5 learn</title>
+    <link href="../css/c1.css" rel="stylesheet" type="text/css">
+
+    <script>
+        var x=document.getElementById("location");
+        function getLocation()
+        {
+            if (navigator.geolocation)
+            {
+                navigator.geolocation.watchPosition(showPosition);
+            }
+            else{x.innerHTML="该浏览器不支持获取地理位置。";}
+        }
+        function showPosition(position)
+        {
+            x.innerHTML="纬度: " + position.coords.latitude + "<br>经度: " + position.coords.longitude;
+        }
+        function showError(error)
+        {
+            switch(error.code)
+            {
+                case error.PERMISSION_DENIED:
+                    x.innerHTML="用户拒绝对获取地理位置的请求。";
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    x.innerHTML="位置信息是不可用的。";
+                    break;
+                case error.TIMEOUT:
+                    x.innerHTML="请求用户地理位置超时。";
+                    break;
+                case error.UNKNOWN_ERROR:
+                    x.innerHTML="未知错误。";
+                    break;
+            }
+        }
+
+        var myVideo=document.getElementById("video1");
+        function playPause(){
+            if(myVideo.paused) myVideo.play();
+            else myVideo.pause();
+        }
+        function makeBig(){
+            myVideo.width=560;
+        }
+        function makeSmall(){
+            myVideo.width=320;
+        }
+        function makeNormal(){
+            myVideo.width=420;
+        }
+
+        function clickCounter(){
+            if(localStorage.clickcount){
+                localStorage.clickcount = Number(localStorage.clickcount)+1;
+            }else{
+                localStorage.clickcount = 1;
+            }
+            document.getElementById("clickResult").innerHTML="localStorage account = "+localStorage.clickcount+"time(s)";
+        }
+        function clickCounter2(){
+            if(sessionStorage.clickcount){
+                sessionStorage.clickcount = Number(sessionStorage.clickcount)+1;
+            }else{
+                sessionStorage.clickcount = 1;
+            }
+            document.getElementById("clickResult1").innerHTML="sessionStorage account = "+sessionStorage.clickcount+"time(s)";
+        }
+
+        var w;
+        function startWorker()
+        {
+            if(typeof(Worker)!=="undefined")
+            {
+                if(typeof(w)=="undefined")
+                {
+                    w=new Worker("JS/demo_workers.js");
+                }
+                w.onmessage = function (event) {
+                    document.getElementById("result").innerHTML=event.data;
+                };
+            }
+            else
+            {
+                document.getElementById("result").innerHTML="Sorry, your browser does not support Web Workers...";
+            }
+        }
+        function stopWorker()
+        {
+            w.terminate();
+        }
+    </script>
+
+</head>
+<body>
+    <p id="location">点击按钮获取您当前坐标（可能需要比较长的时间获取）：</p>
+    <button id="locationBtn" onclick="getLocation()">Get Location</button>
+    <hr>
+    <video width="320" height="240" controls>
+        <source src="../movie/movie.mp4">
+        浏览器不支持H5
+    </video>
+    <hr>
+    <div id="div1" style="text-align:left">
+        <button onclick="playPause()">播放 / 暂停</button>
+        <button onclick="makeBig()">放大</button>
+        <button onclick="makeSmall()">缩小</button>
+        <button onclick="makeNormal()">还原</button>
+        <br>
+        <video width="420" id="video1">
+            <source src="../movie/mov_bbb.mp4" type="video/mp4">
+            浏览器不支持H5
+        </video>
+    </div>
+    <hr>
+    <audio controls>
+        <source src="../audio/horse.mp3">
+        浏览器不支持H5
+    </audio>
+    <hr>
+    <form action="http://www.baidu.com" autocomplete="on" method="get">
+        选择你的颜色：<input type="color" name="favcolor"><br>
+        生日：<input type="datetime-local" name="bday"><br>
+        邮件：<input type="email" name="email"><br>
+        年月：<input type="month" name="bdaymonth"><br>
+        数（1-10之间）：<input type="number" name="number" max="10" min="1"><br>
+        范围（0-10之间）：<input type="range" name="range" max="10" min="0" step="2"><br>
+        搜索：<input type="search" name="search"><br>
+        电话号码：<input type="tel" name="usrtel"><br>
+        时间：<input type="time" name="usr_time"><br>
+        网页：<input type="url" name="homepage"><br>
+        周：<input type="week" name="week_year"><br>
+        列表：<input list="browsers" name="browsers"><br>
+        国家：<input type="text" name="country" pattern="[A-Za-z]{3}" title="Three letter"><br>
+        文件：<input type="file" name="file" multiple><br>
+        <datalist id="browsers">
+            <option value="IE"></option>
+            <option value="Chrome"></option>
+            <option value="Safari"></option>
+            <option value="Firefox"></option>
+        </datalist>
+        用户名：<input type="text" name="usr_name"><br>
+        密码：<keygen name="password"></keygen><br>
+        <input type="submit">
+        <input type="image" src="../PIC/img_submit.gif" width="48" height="48" alt="Submit" formtarget="_blank">
+    </form>
+    <hr>
+    <form oninput="x.value=parseInt(a.value)+parseInt(b.value)">
+        0
+        <input type="range" id="a" value="100">
+        100 +
+        <input type="number" id="b" value="100">
+        =
+        <output name="x" for="a b"></output>
+    </form>
+    <hr>
+    <form id="f1" action="http://www.baidu.com" method="post" autocomplete="on" novalidate>
+        First name:<input type="text" name="fname" placeholder="First Name" required><br>
+        Last name: <input type="text" name="lname" placeholder="Last Name" required><br>
+        E-mail: <input type="email" name="email" placeholder="Email" autocomplete="off"><br>
+        <input type="submit" value="Submit as application/x- www-form-urlencoded" formaction="h1.html" formmethod="get" formnovalidate>
+        <input type="submit" formenctype="multipart/form-data" value="Submit as multipart/form-data" formaction="h1.html"><br>
+    </form>
+    属于表单内：<input type="text" autofocus form="f1"><br>
+    <hr>
+    <button onclick="clickCounter()">localStorage</button><br>
+    <div id ="clickResult"></div><br>
+    <button onclick="clickCounter2()">sessionStorage</button><br>
+    <div id="clickResult1"></div><br>
+    <hr>
+    <p>Count numbers: <output style="background: royalblue" id="result"></output></p>
+    <button onclick="startWorker()">Start Worker</button>
+    <button onclick="stopWorker()">Stop Worker</button>
+    <br><br>
+    <hr>
+</body>
+</html>

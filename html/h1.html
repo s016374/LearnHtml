@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+    <style type="text/css">
+        body {background-color:#D9D9D9;}
+        p {color:blue;}
+    </style>
+    <meta charset="UTF-8">
+    <title>Learn</title>
+    <script type="text/javascript" src="../JS/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="../JS/alphabet.js"></script>
+
+    <script>
+        function drop(ev){
+            ev.preventDefault();
+            var data=ev.dataTransfer.getData("Text")
+            ev.target.appendChild(document.getElementById(data))
+        }
+        function drag(ev){
+            ev.dataTransfer.setData("Text",ev.target.id);
+        }
+        function allowDrop(ev){
+            ev.preventDefault()
+        }
+    </script>
+
+    <link href="../css/c1.css" rel="stylesheet" type="text/css">
+    <style>
+        body{
+            background-image: none;
+        }
+    </style>
+</head>
+
+<body>
+<h1 id="top">LEARN</h1>
+<p style="text-align:center">JS</p>
+<hr>
+<canvas id="myCanvas">
+    <script type="text/javascript">
+    	var c=document.getElementById("myCanvas");
+		var ctx=c.getContext("2d");
+		var gra=ctx.createLinearGradient(0,0,300,100);
+		gra.addColorStop(0,"red");
+		gra.addColorStop(0.33,"blue");
+		gra.addColorStop(0.66,"green");
+		gra.addColorStop(1,"yellow");
+		ctx.fillStyle=gra;
+		ctx.fillRect(0,0,100,50);
+		ctx.fillRect(200,100,100,50);
+		ctx.moveTo(100,50);
+		ctx.lineTo(200,100);
+		ctx.stroke();
+		
+		ctx.beginPath();
+		gra=ctx.createRadialGradient(400,100,0,400,100,50);
+		gra.addColorStop(0,"red");
+		gra.addColorStop(0.33,"blue");
+		gra.addColorStop(0.66,"green");
+		gra.addColorStop(1,"yellow");
+		ctx.arc(400,100,50,0,2*Math.PI);
+		ctx.fillStyle=gra;
+		ctx.fill();
+		ctx.stroke();
+		
+		gra=ctx.createLinearGradient(50,200,550,400);
+		gra.addColorStop(0,"red");
+		gra.addColorStop(0.33,"blue");
+		gra.addColorStop(0.66,"green");
+		gra.addColorStop(1,"yellow");
+		ctx.fillStyle=gra;
+		ctx.font="30px Arial";
+		ctx.fillText("FillText Canvas",50,200,500);
+		ctx.strokeText("StrokeText Canvas",50,300,500);
+        var img=document.getElementById("img1");
+        ctx.drawImage(img,600,50);
+	</script>
+    <!--
+	<script type="text/javascript" src="JS/bubbles.js"></script>
+    <script type="text/javascript" src="JS/main.js"></script>
+	-->
+</canvas>
+<svg xmlns="http://www.w3.org/2002/08/xhtml/xhtml1-strict.xsd" version="1.2" height="190">
+    <text x="10" y="20" fill="red" transform="rotate(30 20,40)">SVG</text>
+    <polygon points="100,10 40,180 190,60 10,60 160,180" style="fill:lime;stroke:purple;stroke-width:5;fill-rule:evenodd;"></polygon>
+    <animate attributeType="CSS" attributeName="opacity" from="1" to="0" dur="1.5s" repeatCount="indefinite" />
+</svg>
+<hr>
+
+<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 120px; border: 1px; padding: 10px; solid-color: #aaaaaa; background: #BABABA">
+    <img id="drag1" src="../PIC/venglobe.gif" draggable="true" ondragstart="drag(event)" width="100" height="100">
+</div>
+<br>
+<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)" style="width: 120px; height: 120px; border: 1px; padding: 10px; solid-color: #aaaaaa; background: #BABABA">
+</div>
+<hr>
+
+<p>Image to use:</p>
+<img id="scream" src="../PIC/img1.jpg" alt="The Scream" width="220" height="277">
+<p>Canvas:</p>
+<canvas id="myCanvas2" width="250" height="300" style="border:1px solid #d3d3d3;">
+    您的浏览器不支持 HTML5 canvas 标签。
+</canvas>
+<script>
+    var c=document.getElementById("myCanvas2");
+    var ctx=c.getContext("2d");
+//    var img = new Image();
+//    img.src="PIC/img1.jpg"
+    var img=document.getElementById("scream");
+    ctx.drawImage(img,10,10);
+</script>
+
+<hr>
+<a id = "t1" href="http://localhost:63342/LearnHtml/h1.html" target="_blank" style="font-family:arial;color:#F3B026;font-size:20px;">link</a>
+<br>
+<img src="../PIC/yun.png" alt="Yun" width="231" height="98" style="float:right" id="img1">
+<br>
+<img src="../PIC/planets.gif" alt="plants" usemap="#planetmap">
+<map name="planetmap">
+    <area shape="rect" href="other.html">
+    <br>
+    <hr>
+    <table id="table1" width="400" border="2" cellspacing="1" cellpadding="10" summary="table sum">
+        <caption>
+            table 1
+        </caption>
+        <tbody>
+        <tr>
+            <th scope="col">table;</th>
+            <th scope="col" colspan="2">th2;</th>
+        </tr>
+        <tr>
+            <th scope="row">th1_r;</th>
+            <td>
+                <p>p1</p>
+                <p>p2</p>
+            </td>
+            <td>
+                <li>l1</li>
+                <li>l2</li>
+            </td>
+        </tr>
+        <tr>
+            <th scope="row" rowspan="2">th2_r;</th>
+            <td>
+                <table>
+                    <tr>
+                        <td>A</td>
+                        <td>B</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td>D</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <ol start="5">
+                    <li>ol1</li>
+                    <li>ol2</li>
+                </ol>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <dl>
+                    <dt>dt1</dt>
+                    <dd>dd1</dd>
+                    <dt>dt2</dt>
+                    <dd>dd2</dd>
+                </dl>
+            </td>
+            <td>
+                <ul>
+                    <li>u1</li>
+                    <ul>
+                        <li>u2</li>
+                        <ul>
+                            <li>u3</li>
+                        </ul>
+                    </ul>
+                </ul>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <hr>
+    <div class="class1" id="id1">Content for  class "class1" id "id1" Goes Here</div>
+    <div class="class1" id="id2">"class2" "id2"</div>
+    <div class="class1" id="id3">"class3""id3"</div>
+    <hr>
+    <div class="" id="" style="width:400px; height:400px; background-color:#BABABA">
+        <form id="form1" name="form1" method="post">
+            <fieldset>
+                <legend>text & Email</legend>
+                Name: <input type="text" size="30" value="Tom"><br>
+                Email: <input type="email" size="30" value="abc@123.com"><br>
+                <input type="submit" value="Submit">
+                <input type="button" value="Button">
+            </fieldset>
+        </form>
+        <form id="form2" name="form2" method="get">
+            <input type="checkbox" name="checkbox1" value="item1"> check box 1<br>
+            <input type="checkbox" name="checkbox2" value="item2" checked> check box 2<br>
+            <input type="radio" name="radio1" value="item3"> radio 1<br>
+            <input type="radio" name="radio1" value="item4" checked> radio 2<br>
+        </form>
+        <form action="MAILTO:dongcheng02@chinatopcredit.com", method="post", enctype="text/plain">
+            Email: <input type="email" size="30" value="a@b.com"><br>
+            Text: <input type="text" size="30" value="abc"><br>
+            <input type="submit" value="Send">
+            <input type="reset" value="Reset">
+        </form>
+    </div>
+    <div class="" style="width:400px; height:300px; background-color:#BABABA">
+        <p>iframe</p>
+        <iframe src="http://www.baidu.com" name="iframe" width="300" height="250"></iframe>
+    </div>
+    <div class="" style="width:400px; height:400px; background-color:#BABABA">
+        <p id="id10">AAAA</p>
+        <script>
+            function change(){
+                var elem = document.getElementById("id10");
+                elem.style.color="#BD2729"
+            }
+        </script>
+        <button type="button" onClick="change()">Change</button>
+        <video width="320px" height="240px" controls>
+            <source src="../movie/movie.mp4" type="video/mp4">
+        </video>
+    </div>
+    <hr>
+    <a id="return" href="#top" style="font-family:arial;color:#F05437;font-size:20px;">return</a>
+    <hr>
+</body>
+</html>
